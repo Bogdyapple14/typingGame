@@ -1,15 +1,5 @@
 <div class="content">
-  <span *ngIf="readyBoolean; else startButton" style="display: flex">
-    <h2 *ngFor="let letter of lettersArray; let i = index">
-      <span
-        [ngClass]="{
-          correct: letter === type[i],
-          incorrect: letter !== type[i] && type[i]
-        }"
-        >{{ letter }}</span
-      >
-    </h2>
-  </span>
+  <h2 *ngIf="readyBoolean; else startButton">{{ word }}</h2>
   <ng-template #startButton>
     <button (click)="startGame()">{{ startText }}</button>
   </ng-template>

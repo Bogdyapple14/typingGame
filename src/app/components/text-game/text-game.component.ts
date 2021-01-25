@@ -3,10 +3,10 @@ import { WordServiceService } from 'src/app/shared/word-service.service';
 
 @Component({
   selector: 'app-word-game',
-  templateUrl: './word-game.component.html',
-  styleUrls: ['./word-game.component.scss'],
+  templateUrl: './text-game.component.html',
+  styleUrls: ['./text-game.component.scss'],
 })
-export class WordGame implements OnInit {
+export class TextGame implements OnInit {
   @ViewChild('wordsInput') input: ElementRef;
   word: string = '';
   type: string = '';
@@ -14,7 +14,6 @@ export class WordGame implements OnInit {
   startText = 'Start';
   score: number = 0;
   time: number = 0;
-  lettersArray: any = [];
 
   constructor(private WordServiceService: WordServiceService) {}
 
@@ -22,7 +21,6 @@ export class WordGame implements OnInit {
 
   changeWord() {
     this.word = this.WordServiceService.getWord();
-    this.lettersArray = this.word.split('');
   }
 
   verifyWords() {
@@ -43,8 +41,8 @@ export class WordGame implements OnInit {
         seconds--;
         this.startText = seconds.toString();
       } else {
-        this.changeWord();
         this.type = '';
+        this.changeWord();
         this.readyBoolean = true;
         this.increaseTime();
         this.input.nativeElement.focus();

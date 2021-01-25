@@ -1,0 +1,29 @@
+.content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  button {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    color: sandybrown;
+    background: white;
+    border: 2px solid sandybrown;
+    border-radius: 10px;
+    padding: 0rem 2rem;
+    transition: 0.3s all;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 3rem;
+    &:hover {
+      background: sandybrown;
+      color: white;
+    }
+  }
+}

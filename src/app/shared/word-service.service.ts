@@ -23,7 +23,6 @@ export class WordServiceService {
   private scores: Score[] = [];
 
   getWord() {
-    console.log(this.scores);
     return this.words[Math.floor(Math.random() * this.words.length)];
   }
 
@@ -36,7 +35,6 @@ export class WordServiceService {
       },
       score: score,
     });
-    console.log(this.scores);
   }
 
   constructor() {}
