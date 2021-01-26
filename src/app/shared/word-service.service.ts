@@ -21,12 +21,7 @@ export class WordServiceService {
     'baseball',
   ];
   private texts = [
-    `Computer programming is the process of designing and building an executable computer program to accomplish a 
-    specific computing result or to perform a specific task. Programming involves tasks such as: analysis, generating 
-    algorithms, profiling algorithms' accuracy and resource consumption, and the implementation of algorithms in a 
-    chosen programming language (commonly referred to as coding). The source code of a program is written in 
-    one or more languages that are intelligible to programmers, rather than machine code, which is directly executed
-     by the central processing unit.`,
+    `Tasks accompanying and related to programming include: testing, debugging, source code maintenance, implementation of build systems, and management of derived artifacts, such as the machine code of computer programs.`,
   ];
   private scores: Score[] = [];
 
