@@ -5,4 +5,5 @@ export class Score {
     day: new Date().getDate(),
   };
   score: number;
+  gameType: string;
 }

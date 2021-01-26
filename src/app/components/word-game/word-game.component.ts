@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
 import { WordServiceService } from 'src/app/shared/word-service.service';
 
 @Component({
@@ -8,20 +9,29 @@ import { WordServiceService } from 'src/app/shared/word-service.service';
 })
 export class WordGame implements OnInit {
   @ViewChild('wordsInput') input: ElementRef;
-  word: string = '';
   type: string = '';
   readyBoolean: boolean = false;
   startText = 'Start';
   score: number = 0;
   time: number = 0;
+
+  gameType: string = '';
   lettersArray: any = [];
+  word: string = '';
 
-  constructor(private WordServiceService: WordServiceService) {}
+  constructor(
+    private WordServiceService: WordServiceService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.gameType = this.route.snapshot.routeConfig.path;
+  }
 
   changeWord() {
-    this.word = this.WordServiceService.getWord();
+    this.gameType === 'word-game'
+      ? (this.word = this.WordServiceService.getWord())
+      : (this.word = this.WordServiceService.getText());
     this.lettersArray = this.word.split('');
   }
 
@@ -43,11 +53,11 @@ export class WordGame implements OnInit {
         seconds--;
         this.startText = seconds.toString();
       } else {
-        this.changeWord();
         this.type = '';
         this.readyBoolean = true;
         this.increaseTime();
         this.input.nativeElement.focus();
+        this.changeWord();
         clearInterval(interval);
       }
     }, 1000);
@@ -60,7 +70,7 @@ export class WordGame implements OnInit {
         this.type = '';
         this.readyBoolean = false;
         this.startText = 'Play Again';
-        this.WordServiceService.updateScores(this.score);
+        this.WordServiceService.updateScores(this.score, 'word-game');
         clearInterval(timeInterval);
       }
     }, 1000);
