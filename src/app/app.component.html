@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" [ngClass]="{ dark: darkThemeEnabled }">
   <h2
     routerLink="/"
     routerLinkActive="active"
@@ -21,8 +21,18 @@
     >
       Scores
     </h3>
+    <h3>
+      <i
+        class="far"
+        [ngClass]="{
+          'fa-moon': !darkThemeEnabled,
+          'fa-sun': darkThemeEnabled
+        }"
+        (click)="darkThemeEnabled = !darkThemeEnabled"
+      ></i>
+    </h3>
   </div>
 </div>
-<div class="container">
+<div class="container" [ngClass]="{ dark: darkThemeEnabled }">
   <router-outlet></router-outlet>
 </div>

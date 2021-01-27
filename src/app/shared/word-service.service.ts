@@ -25,6 +25,10 @@ export class WordServiceService {
   ];
   private scores: Score[] = [];
 
+  enableDarkMode() {
+    document.documentElement.style.setProperty('--background-color', '#3014');
+  }
+
   getWord() {
     return this.words[Math.floor(Math.random() * this.words.length)];
   }

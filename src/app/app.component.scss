@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  background: var(--lightThemeBackground) !important;
+}
+
 .navbar {
   position: fixed;
   border-bottom: 2px solid sandybrown;
@@ -37,6 +41,8 @@
   }
 }
 .container {
-  max-width: 70%;
+  padding: 0 10vw;
   margin: 0 auto;
+  min-height: 100vh;
+  background: var(--background-color);
 }
