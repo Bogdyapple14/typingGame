@@ -25,8 +25,8 @@ export class WordServiceService {
   ];
   private scores: Score[] = [];
 
-  enableDarkMode() {
-    document.documentElement.style.setProperty('--background-color', '#3014');
+  getScore() {
+    return this.scores;
   }
 
   getWord() {
@@ -37,7 +37,7 @@ export class WordServiceService {
     return this.texts[Math.floor(Math.random() * this.texts.length)];
   }
 
-  updateScores(score: number, gameType: string) {
+  updateScores(score: number, gameType: string, time: number) {
     this.scores.push({
       date: {
         year: new Date().getFullYear(),
@@ -46,6 +46,7 @@ export class WordServiceService {
       },
       score: score,
       gameType: gameType,
+      time: time,
     });
   }
 

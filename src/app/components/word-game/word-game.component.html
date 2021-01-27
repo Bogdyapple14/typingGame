@@ -1,5 +1,6 @@
 <div class="content">
-  <span *ngIf="readyBoolean; else startButton">
+  <!-- Word Game Template -->
+  <span *ngIf="!readyWordGameBoolean; else startButton">
     <h3
       class="word-game"
       *ngIf="gameType === 'word-game'"
@@ -15,11 +16,11 @@
         >
       </span>
     </h3>
-    <!--  -->
-    <span *ngIf="textGameEnded === false; else startButton">
+    <!-- Text Game Template -->
+    <span *ngIf="readyTextGameBoolean === false; else startButton">
       <h3
         class="text-game"
-        *ngIf="gameType === 'text-game' && textGameEnded === false"
+        *ngIf="gameType === 'text-game' && readyTextGameBoolean === false"
       >
         <span *ngFor="let letter of word.split(''); let i = index">
           <span
@@ -32,12 +33,13 @@
         >
       </h3>
     </span>
-    <!--  -->
   </span>
 
+  <!-- Start Button / Countdown -->
   <ng-template #startButton>
     <button (click)="startGame()">{{ startText }}</button>
   </ng-template>
+
   <input
     (keyup)="verifyWords()"
     [(ngModel)]="type"
@@ -45,18 +47,20 @@
     placeholder="Type as fast as you can"
     #wordsInput
   />
+  <!-- Score / Final Text for word game -->
   <span class="text-for-word-game">
-    <h3 *ngIf="readyBoolean && gameType === 'word-game'">
+    <h3 *ngIf="!readyWordGameBoolean && gameType === 'word-game'">
       Score: {{ score }} | Time: {{ time }} seconds
     </h3>
-    <h4 *ngIf="time === 60 && gameType === 'word-game'">
+    <h4 *ngIf="time === 60 && gameType === 'word-game' && readyWordGameBoolean">
       You wrote {{ score }} words in {{ time }} seconds
     </h4>
   </span>
-  <h3 *ngIf="!textGameEnded && gameType === 'text-game'">
+  <!-- Score / Final Text for text game -->
+  <h3 *ngIf="!readyTextGameBoolean && gameType === 'text-game' && time >= 0">
     Time: {{ time }} seconds
   </h3>
-  <h4 *ngIf="textGameEnded && gameType === 'text-game' && time > 0">
+  <h4 *ngIf="readyTextGameBoolean && gameType === 'text-game' && time > 0">
     You wrote the text in {{ time }} seconds
   </h4>
 </div>

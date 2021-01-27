@@ -34,6 +34,10 @@
   h3.text-game {
     color: var(--darkThemeText) !important;
   }
+  h3,
+  h3 div {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
 }
 
 .navbar.dark {

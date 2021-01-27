@@ -1,1 +1,26 @@
-<p>scores works!</p>
+<div class="content">
+  <h2>Scores</h2>
+  <h3 class="top">
+    <div>Date ( DD / MM / YY )</div>
+    <div>Game Type</div>
+    <div>Score / Time</div>
+  </h3>
+  <span class="score" *ngFor="let score of scores">
+    <h3 *ngIf="score.gameType === 'text-game'">
+      <div>
+        ( {{ score.date.day }} / {{ score.date.month }} /
+        {{ score.date.year }} )
+      </div>
+      <div>Text Game</div>
+      <div>Wrote the text in {{ score.time }} seconds</div>
+    </h3>
+    <h3 *ngIf="score.gameType === 'word-game'">
+      <div>
+        ( {{ score.date.day }} / {{ score.date.month }} /
+        {{ score.date.year }} )
+      </div>
+      <div>Word Game</div>
+      <div>Wrote {{ score.score }} words in {{ score.time }} seconds</div>
+    </h3>
+  </span>
+</div>

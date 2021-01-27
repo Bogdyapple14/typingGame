@@ -1,0 +1,36 @@
+.content {
+  padding-top: 10%;
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 5rem;
+    &::after {
+      content: "";
+      background: sandybrown;
+      width: 5%;
+      height: 2px;
+      display: block;
+      position: absolute;
+      bottom: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-weight: 400;
+    font-size: 1.6rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    div {
+      padding: 15px 0;
+      width: 100%;
+      text-align: center;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
+    }
+  }
+}
