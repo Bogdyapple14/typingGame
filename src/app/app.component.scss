@@ -41,8 +41,14 @@ body {
   }
 }
 .container {
-  padding: 0 10vw;
+  padding: 3rem 10vw;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 89.8vh;
   background: var(--background-color);
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 0 3vw;
+  }
 }
