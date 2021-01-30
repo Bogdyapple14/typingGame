@@ -30,7 +30,7 @@
             }"
             >{{ letter }}</span
           ></span
-        >
+        >...
       </h3>
     </span>
   </span>
@@ -46,6 +46,7 @@
     type="text"
     placeholder="Type as fast as you can"
     #wordsInput
+    [maxlength]="word.length"
   />
   <!-- Score / Final Text for word game -->
   <span class="text-for-word-game">

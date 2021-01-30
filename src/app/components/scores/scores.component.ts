@@ -15,4 +15,9 @@ export class ScoresComponent implements OnInit {
   ngOnInit(): void {
     this.scores = this.WordServiceService.getScore();
   }
+
+  clearScores() {
+    this.WordServiceService.clearScores();
+    this.scores = this.WordServiceService.getScore();
+  }
 }

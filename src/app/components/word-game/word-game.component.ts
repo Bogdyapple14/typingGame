@@ -35,7 +35,7 @@ export class WordGame implements OnInit {
   changeWord() {
     this.gameType === 'word-game'
       ? (this.word = this.WordServiceService.getWord())
-      : (this.word = this.WordServiceService.getText());
+      : (this.word = this.WordServiceService.getText().slice(0, 250));
   }
 
   // Verify if what the user wrote matches the word
@@ -57,27 +57,29 @@ export class WordGame implements OnInit {
   }
 
   startGame() {
-    // Every time you start the game :
-    this.time = 0;
-    this.score = 0;
-    let seconds = 3;
-    // Start the countdown
-    this.startText = seconds.toString();
-    let interval = setInterval(() => {
-      if (seconds > 1) {
-        seconds--;
-        this.startText = seconds.toString();
-      } else {
-        // If the countdown ended and the game began
-        this.type = '';
-        this.readyTextGameBoolean = false;
-        this.readyWordGameBoolean = false;
-        this.increaseTime();
-        this.input.nativeElement.focus();
-        this.changeWord();
-        clearInterval(interval);
-      }
-    }, 1000);
+    if (this.startText === 'Start' || this.startText === 'Play Again') {
+      // Every time you start the game :
+      this.time = 0;
+      this.score = 0;
+      let seconds = 3;
+      // Start the countdown
+      this.startText = seconds.toString();
+      let interval = setInterval(() => {
+        if (seconds > 1) {
+          seconds--;
+          this.startText = seconds.toString();
+        } else {
+          // If the countdown ended and the game began
+          this.type = '';
+          this.readyTextGameBoolean = false;
+          this.readyWordGameBoolean = false;
+          this.increaseTime();
+          this.input.nativeElement.focus();
+          this.changeWord();
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
   }
 
   increaseTime() {

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "type-racer-project": {
+      "hosting": {
+        "typingGame": [
+          "type-racer-project"
+        ]
+      }
+    }
+  }
+}
